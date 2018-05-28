@@ -34,8 +34,7 @@ export default class Scrollchor extends React.Component {
       animate: { offset, duration, easing },
       beforeAnimate: props.beforeAnimate || function () {},
       afterAnimate: props.afterAnimate || function () {},
-      disableHistory: props.disableHistory,
-      oldRef: (this.state.oldRef !== null) ? this.state.oldRef : null
+      disableHistory: props.disableHistory
     };
   }
 
