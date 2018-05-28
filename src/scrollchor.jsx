@@ -44,11 +44,7 @@ export default class Scrollchor extends React.Component {
 
     const location = window.location.hash.substr(1)
 
-    console.log(location, this.state.to)
-
     if(location === this.state.to) return
-
-
 
     animateScroll(this.state.to, this.state.animate)
       .then((id) => {
