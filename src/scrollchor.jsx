@@ -34,13 +34,23 @@ export default class Scrollchor extends React.Component {
       animate: { offset, duration, easing },
       beforeAnimate: props.beforeAnimate || function () {},
       afterAnimate: props.afterAnimate || function () {},
-      disableHistory: props.disableHistory
+      disableHistory: props.disableHistory,
+      oldRef: (this.state.oldRef !== null) ? this.state.oldRef : null
     };
   }
 
   _handleClick = (event) => {
     this.state.beforeAnimate(event);
     event && event.preventDefault();
+
+    const location = window.location.hash.substr(1)
+
+    console.log(location, this.state.to)
+
+    if(location === this.state.to) return
+
+
+
     animateScroll(this.state.to, this.state.animate)
       .then((id) => {
         if (id) {
