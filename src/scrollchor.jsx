@@ -44,8 +44,7 @@ export default class Scrollchor extends React.Component {
 
     if(window.location.hash.substr(1) === this.state.to && this.state.to !== 'header') return
 
-    let trigger = document.createEvent('hash-change')
-    trigger.hash = this.state.to
+    let trigger = new CustomEvent('hash-change', {detail: this.state.to})
     document.dispatchEvent(trigger)
 
     animateScroll(this.state.to, this.state.animate)
