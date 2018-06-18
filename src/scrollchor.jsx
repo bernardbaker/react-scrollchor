@@ -25,14 +25,9 @@ export default class Scrollchor extends React.Component {
   }
 
   orientationchange(event) {
-    console.dir(this)
-    console.dir(this.state)
-    console.dir(this.props)
-    console.log('...')
-    return
-    const visible = isElementVisible(document.getElementById(this.props.to))
+    const visible = isElementVisible(document.getElementById(this.state.to))
     if(!visible) {
-      animateScroll(this.props.to, this.props.animate)
+      animateScroll(this.state.to, this.state.animate)
       console.log('move into view')
     } else {
       console.log('no need')
