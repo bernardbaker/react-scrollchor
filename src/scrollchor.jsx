@@ -22,12 +22,12 @@ export default class Scrollchor extends React.Component {
     children: PropTypes.node
   }
 
-  componentDidMount() {
-    window.addEventListener("orientationchange", this.orientationchange)
-  }
-
   orientationchange(event) {
-    console.dir(event)
+    console.dir(this)
+    console.dir(this.state)
+    console.dir(this.props)
+    console.log('...')
+    return
     const visible = isElementVisible(document.getElementById(this.props.to))
     if(!visible) {
       animateScroll(this.props.to, this.props.animate)
@@ -75,6 +75,7 @@ export default class Scrollchor extends React.Component {
 
   componentWillReceiveProps (props) {
     this.setState(Scrollchor._stateHelper(props));
+    window.addEventListener("orientationchange", this.orientationchange)
   }
 
   render () {
