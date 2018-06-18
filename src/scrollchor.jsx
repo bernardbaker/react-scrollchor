@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { animateScroll, updateHistory, isElementVisible } from './helpers';
+import { animateScroll, updateHistory } from './helpers';
 
 export default class Scrollchor extends React.Component {
   constructor (props) {
     super(props);
     this.state = Scrollchor._stateHelper(props);
     this.simulateClick = this._handleClick;
-    this.orientationchange = this.orientationchange.bind(this)
-    window.addEventListener("orientationchange", this.orientationchange)
   }
 
   static propTypes = {
@@ -22,17 +20,6 @@ export default class Scrollchor extends React.Component {
     afterAnimate: PropTypes.func,
     disableHistory: PropTypes.bool,
     children: PropTypes.node
-  }
-
-  orientationchange(event) {
-    const visible = isElementVisible(document.getElementById(this.state.to))
-    if(!visible) {
-      animateScroll(this.state.to, this.state.animate)
-      console.log('move into view')
-    } else {
-      console.log('no need')
-      return
-    }
   }
 
   static _stateHelper (props) {
