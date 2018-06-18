@@ -7,6 +7,7 @@ export default class Scrollchor extends React.Component {
     super(props);
     this.state = Scrollchor._stateHelper(props);
     this.simulateClick = this._handleClick;
+    this.orientationchange = this.orientationchange.bind(this)
     window.addEventListener("orientationchange", this.orientationchange)
   }
 
