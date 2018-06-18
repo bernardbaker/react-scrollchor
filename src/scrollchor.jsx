@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { animateScroll, updateHistory } from './helpers';
+import { animateScroll, updateHistory, isElementVisible } from './helpers';
 
 export default class Scrollchor extends React.Component {
   constructor (props) {
@@ -20,6 +20,14 @@ export default class Scrollchor extends React.Component {
     afterAnimate: PropTypes.func,
     disableHistory: PropTypes.bool,
     children: PropTypes.node
+  }
+
+  componentDidMount() {
+    window.addEventListener("orientationchange", this.orientationchange)
+  }
+
+  orientationchange(event) {
+    console.dir(event)
   }
 
   static _stateHelper (props) {
