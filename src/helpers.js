@@ -60,7 +60,7 @@ function getOffsetTop (element) {
   return top + getScrollTop();
 }
 
-const isElementVisible = (el) => {
+export function isElementVisible (el) {
   var rect     = el.getBoundingClientRect(),
       vWidth   = window.innerWidth,
       vHeight  = window.innerHeight,
@@ -75,7 +75,5 @@ const isElementVisible = (el) => {
   return (
         el.contains(efp(rect.left,  rect.top))
     ||  el.contains(efp(rect.right, rect.top))
-    ||  el.contains(efp(rect.right, rect.bottom))
-    ||  el.contains(efp(rect.left,  rect.bottom))
   );
 }
